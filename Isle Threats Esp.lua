@@ -1,8 +1,7 @@
 --Scripted By UHHH
 --Created Using Gui to Lua Plugin
 --Tested on Synapse X
---Works With Wrd Api, Synapse X And others
---sry for my english
+--Works With Wrd Api, Synapse X And others I Guess.
 
 --local
 local Stan = Instance.new("BillboardGui")
@@ -81,8 +80,13 @@ Snake2.TextStrokeTransparency = 0.550
 
 --Agent
 
-while (true) do
-       TimeDay.Text = string.sub(game.Lighting.TimeOfDay,1,5)
+local RunService = game:GetService("RunService")
+ 
+local RATE_PER_SECOND = 2
+ 
+RunService.Heartbeat:Connect(function(step)
+	local increment = RATE_PER_SECOND * step
+                    TimeDay.Text = string.sub(game.Lighting.TimeOfDay,1,5)
        wait()
     if not game.Workspace.Threats["Agent B6"]:FindFirstChild("Agent") then
 Agent.Parent = game.Workspace.Threats["Agent B6"]
@@ -103,4 +107,4 @@ Agent2.TextSize = 62.000
 Agent2.TextStrokeTransparency = 0.550
 Agent2.StudsOffset = Vector3.new(0,2.5,0)
     end
-end
+end)
